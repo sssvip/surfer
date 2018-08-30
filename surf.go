@@ -26,8 +26,7 @@ import (
 	"net/http/cookiejar"
 	"strings"
 	"time"
-
-	"github.com/henrylee2cn/goutil"
+	"sync"
 )
 
 // Surf is the default Download implementation.
@@ -80,11 +79,11 @@ func (surf *Surf) Download(param *Request) (*http.Response, error) {
 	return param.writeback(resp), err
 }
 
-var dnsCache = &DnsCache{ipPortLib: goutil.AtomicMap()}
+var dnsCache = &DnsCache{ipPortLib: sync.Map{}}
 
 // DnsCache DNS cache
 type DnsCache struct {
-	ipPortLib goutil.Map
+	ipPortLib sync.Map
 }
 
 // Reg registers ipPort to DNS cache.
