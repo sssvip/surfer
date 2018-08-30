@@ -24,7 +24,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"golang.org/x/net/html/charset"
+	"github.com/golang/net/html/charset"
 )
 
 // AutoToUTF8 采用surf内核下载时，可以尝试自动转码为utf8
