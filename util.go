@@ -24,20 +24,21 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/sssvip/net/html/charset"
+	//"github.com/sssvip/net/html/charset"
+	"github.com/pkg/errors"
 )
 
 // AutoToUTF8 采用surf内核下载时，可以尝试自动转码为utf8
 // 采用phantomjs内核时，无需转码（已是utf8）
 func AutoToUTF8(resp *http.Response) error {
-	destReader, err := charset.NewReader(resp.Body, resp.Header.Get("Content-Type"))
+	/*destReader, err := charset.NewReader(resp.Body, resp.Header.Get("Content-Type"))
 	if err == nil {
 		resp.Body = &RespBody{
 			ReadCloser: resp.Body,
 			Reader:     destReader,
 		}
-	}
-	return err
+	}*/
+	return errors.New("not implement now")
 }
 
 // BodyBytes 读取完整响应流正文
